@@ -3,6 +3,8 @@ import pandas
 import scipy
 import numpy
 import sys
+!pip install -U scikit-learn
+import sklearn
 
 
 TRAIN_DATA_URL = "https://storage.googleapis.com/kubric-hiring/linreg_train.csv"
@@ -17,9 +19,18 @@ def predict_price(area) -> float:
     """
     response = requests.get(TRAIN_DATA_URL)
     # YOUR IMPLEMENTATION HERE
-    from sklearn.linearmodel import LinearRegression
-    regressor = LinearRegression()
-    regressor.fit(X_train,Y_train)
+  
+    TRAIN_DATA_URL = "https://storage.googleapis.com/kubric-hiring/linreg_train.csv"
+    TEST_DATA_URL = "https://storage.googleapis.com/kubric-hiring/linreg_test.csv"
+    dataset = pd.read_csv('https://storage.googleapis.com/kubric-hiring/linreg_train.csv')
+    X_train= dataset.iloc[:, :-1].values
+    Y_train= dataset.iloc[:, :1].values
+    from sklearn.linear_model import LinearRegression
+    model = LinearRegression(fit_intercept=True)
+    model.fit(X_train[:, np.newaxis],Y_train)
+    xfit= np.linespace(0,10,1000)
+    y.fit= model.predict(xfit[:, np.newaxis])
+    plt.plot(xfit,yfit)
     ...
 
 
