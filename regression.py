@@ -17,6 +17,9 @@ def predict_price(area) -> float:
     """
     response = requests.get(TRAIN_DATA_URL)
     # YOUR IMPLEMENTATION HERE
+    from sklearn.linearmodel import LinearRegression
+    regressor = LinearRegression()
+    regressor.fit(X_train,Y_train)
     ...
 
 
